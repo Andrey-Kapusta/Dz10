@@ -1,0 +1,79 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+int main()
+{
+	system("chcp 1251");
+	Task10();
+	return 0;
+}
+
+int Task10()
+{
+	int  a, b, c;
+	double p;
+	printf("\nВведите длины стороны прямоугольного треугольника (Сторона с должна быть наибольшей):\n");
+	printf("Сторона a\n");
+	scanf("%d", &a);
+	printf("Сторона b\n");
+	scanf("%d", &b);
+	printf("Сторона c\n");
+	scanf("%d", &c);
+	if (c * c == a * a + b * b)
+	{
+		int chose;
+		printf("\nВыбирете желаемое действие\n1 - Нахождение площади фигуры\n2 - Выведение определения фигуры\n3 - Рисование фигуры\n");
+		scanf("%d", &chose);
+		switch (chose)
+		{
+		case 1:
+			p = Tri_area(a, b, c);
+			printf("\nПлощадь треугольника равна: %.2f\n", sqrt(p * (p - a) * (p - b) * (p - c)));
+			break;
+
+		case 2:
+			printf("\nТреугольник\n");
+			break;
+
+		case 3:
+			Tri_paint(a, b, c);
+			break;
+
+		default:
+			printf("\nНеверное значение!\n");
+			break;
+		}
+	}
+	else
+	{
+		printf("\nТакого треугольника не существует!\n");
+	}
+}
+
+
+
+int Tri_area( a, b, c)
+{
+	double z;
+	z = ((a + b + c) / 2);
+	return z;
+}
+
+
+
+
+int Tri_paint(a, b, c)
+{
+	printf("Вот рисунок треугольника:\n");
+	for (int i = 0; i < a; i++)
+	{ 
+		for (int j = 0; j <= i; j++)
+		{ 
+			printf("*");
+		}
+		printf("\n");
+	}
+}
